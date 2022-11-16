@@ -33,9 +33,10 @@ app.get('/', (req, res) => res.send('squib API Running'))
 // define routes
 
 app.use('/api/auth', require('./routes/api/auth'))
+app.use('/api/marketing', require('./routes/api/marketing/marketing.index'))
 app.use('/api/store', require('./routes/api/store'))
-app.use('/api/profile', require('./routes/api/profile'))
-app.use('/api/posts', require('./routes/api/posts'))
+// app.use('/api/profile', require('./routes/api/profile'))
+// app.use('/api/posts', require('./routes/api/posts'))
 if (APP_ENV === 'development')
   app.use('/api/test', require('./routes/api/test/test'))
 
