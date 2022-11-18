@@ -3,9 +3,6 @@ const router = express.Router()
 const { check, validationResult } = require('express-validator')
 require('dotenv').config()
 
-const Mailchimp = require('mailchimp-api-v3')
-const mc = new Mailchimp(process.env.MAILCHIMP_API_KEY)
-
 const {
   SendError,
   mapValidationErrorArray,
@@ -13,6 +10,7 @@ const {
 
 // middlewares
 const auth = require('../../../middleware/auth')
+const mc = require('../../../mailchimp/mailchimp')
 
 // route GET api/store
 // @desc GET A LOGGED IN USERS STORE
@@ -20,7 +18,7 @@ const auth = require('../../../middleware/auth')
 router.post(
   '/pre-launch-sign-up',
   [
-    check('first_name', ' Full name is required').not().isEmpty(),
+    check('first_name', ' First name is required').not().isEmpty(),
     check('email', ' Email is required').not().isEmpty(),
   ],
   async (req, res) => {

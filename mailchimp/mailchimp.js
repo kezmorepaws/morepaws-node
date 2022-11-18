@@ -1,9 +1,6 @@
-const mc = require('@mailchimp/mailchimp_marketing')
 require('dotenv').config()
+const Mailchimp = require('mailchimp-api-v3')
 
-mc.setConfig({
-  apiKey: process.env.MAILCHIMP_API_KEY,
-  server: process.env.MAILCHIMP_SERVER_PREFIX,
-})
+const mc = new Mailchimp(process.env.MAILCHIMP_API_KEY)
 
 module.exports = mc
