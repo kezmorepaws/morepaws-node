@@ -3,6 +3,7 @@ const express = require('express')
 require('dotenv').config()
 const connectDB = require('./db/db')
 const excludeTrackAndTrace = require('./middleware/excludeTrackAndTrace')
+const serverless = require('serverless-http')
 
 const PORT = process.env.PORT
 const APP_ENV = process.env.APP_ENV
@@ -28,16 +29,18 @@ app.use(cors())
 //   next()
 // })
 
-app.get('/', (req, res) => res.send('squib API Running'))
+// app.get('/', (req, res) => res.send('squib API Running'))
 
-// define routes
+// // define routes
 
-app.use('/api/auth', require('./routes/api/auth'))
-app.use('/api/marketing', require('./routes/api/marketing/marketing.index'))
-app.use('/api/store', require('./routes/api/store'))
+app.use('/.netlify/functions/api', require('./routes/api/index'))
+// app.use('/api/marketing', require('./routes/api/marketing/marketing.index'))
+// app.use('/api/store', require('./routes/api/store'))
 // app.use('/api/profile', require('./routes/api/profile'))
 // app.use('/api/posts', require('./routes/api/posts'))
-if (APP_ENV === 'development')
-  app.use('/api/test', require('./routes/api/test/test'))
+// if (APP_ENV === 'development')
+//   app.use('/api/test', require('./routes/api/test/test'))
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+
+module.exports.handler = serverless(app)
