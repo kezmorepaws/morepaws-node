@@ -4,12 +4,12 @@
   "description": "Node server for My Local Deli",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server",
-    "build": "./node_modules/.bin/netlify-lambda build INIT_CWD",
+    "start": "cd src && node server",
+    "server": "cd src && nodemon server",
+    "build": "./node_modules/.bin/netlify-lambda build src",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "sass-watch": "sass --no-source-map --watch sass/main.scss public/main.css"
+    "sass-watch": "sass --no-source-map --watch src/sass/main.scss src/public/main.css"
   },
   "author": "Kez Anwar",
   "license": "MIT",
