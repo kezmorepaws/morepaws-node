@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
-    "build": "./node_modules/.bin/netlify-lambda build",
+    "build": "./node_modules/.bin/netlify-lambda build INIT_CWD",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "sass-watch": "sass --no-source-map --watch sass/main.scss public/main.css"
