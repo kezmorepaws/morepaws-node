@@ -10,7 +10,7 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "sass-watch": "sass --no-source-map --watch src/sass/main.scss src/public/main.css",
-    "postinstall": "netlify-lambda install"
+    "postinstall": "netlify-lambda install src"
   },
   "author": "Kez Anwar",
   "license": "MIT",
