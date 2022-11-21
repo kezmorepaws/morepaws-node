@@ -9,7 +9,8 @@
     "build": "./node_modules/.bin/netlify-lambda build src",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "sass-watch": "sass --no-source-map --watch src/sass/main.scss src/public/main.css"
+    "sass-watch": "sass --no-source-map --watch src/sass/main.scss src/public/main.css",
+    "postinstall": "netlify-lambda install"
   },
   "author": "Kez Anwar",
   "license": "MIT",
